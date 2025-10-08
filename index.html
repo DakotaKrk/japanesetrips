@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nippon — Quiet Beauty</title>
+  <meta name="description" content="En stillsam hyllning till Japan — där tradition möter enkelhet och harmoni." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="container nav">
+      <a class="brand" href="#home">日本 · Nippon</a>
+      <button id="themeToggle" class="btn-ghost" aria-label="Växla tema">☾</button>
+    </nav>
+  </header>
+
+  <main id="home">
+    <!-- HERO -->
+    <section class="hero container">
+      <div class="hero-copy">
+        <h1>Tyst skönhet. Tidlös form.</h1>
+        <p class="lede">
+          En hyllning till Japan — från teceremonins precision till arkitekturens stillhet.
+        </p>
+        <a class="btn" href="#gallery">Utforska</a>
+      </div>
+      <figure class="hero-media" role="img" aria-label="Torii gate i vatten, soluppgång">
+        <img
+          src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1800&q=80"
+          alt="Torii gate i sjö vid soluppgång" />
+      </figure>
+    </section>
+
+    <!-- FILOSOFIER -->
+    <section class="container three">
+      <article class="card" data-reveal>
+        <h2>Wabi-sabi</h2>
+        <p>Skönheten i det enkla och ofullkomliga — där tiden får synas.</p>
+      </article>
+      <article class="card" data-reveal>
+        <h2>Omotenashi</h2>
+        <p>Den japanska gästfriheten — omtanke i varje detalj.</p>
+      </article>
+      <article class="card" data-reveal>
+        <h2>Kisetsu</h2>
+        <p>Att leva i takt med säsongerna — färger, smaker och rytm.</p>
+      </article>
+    </section>
+
+    <!-- GALLERI -->
+    <section id="gallery" class="container section">
+      <header class="section-head">
+        <h3>Platser & stämningar</h3>
+        <p>En stillsam resa genom Japans landskap.</p>
+      </header>
+
+      <div class="masonry">
+        <a class="tile tall"
+           href="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=2000&q=80">
+          <img loading="lazy"
+               src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80"
+               alt="Bambu-skog i Kyoto" />
+          <span class="cap">Arashiyama</span>
+        </a>
+
+        <a class="tile"
+           href="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=2000&q=80">
+          <img loading="lazy"
+               src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=900&q=80"
+               alt="Röda torii i Fushimi Inari" />
+          <span class="cap">Fushimi Inari</span>
+        </a>
+
+        <a class="tile wide"
+           href="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2000&q=80">
+          <img loading="lazy"
+               src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80"
+               alt="Dimhöljda berg i morgonljus" />
+          <span class="cap">Morgonljus</span>
+        </a>
+
+        <a class="tile"
+           href="https://images.unsplash.com/photo-1600011689035-6a53b30b626c?auto=format&fit=crop&w=2000&q=80">
+          <img loading="lazy"
+               src="https://images.unsplash.com/photo-1600011689035-6a53b30b626c?auto=format&fit=crop&w=900&q=80"
+               alt="Sushi serverad på träbricka" />
+          <span class="cap">Washoku</span>
+        </a>
+
+        <a class="tile"
+           href="https://images.unsplash.com/photo-1605745341112-7c36e7c8b4c2?auto=format&fit=crop&w=2000&q=80">
+          <img loading="lazy"
+               src="https://images.unsplash.com/photo-1605745341112-7c36e7c8b4c2?auto=format&fit=crop&w=900&q=80"
+               alt="Te ceremoni i Kyoto" />
+          <span class="cap">Chanoyu</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- AKKORDEON -->
+    <section class="container section">
+      <header class="section-head">
+        <h3>Små förklaringar</h3>
+        <p>Klicka för att läsa mer.</p>
+      </header>
+
+      <div class="accordion" role="tablist">
+        <article class="acc-item">
+          <h4>
+            <button class="acc-trigger" aria-expanded="false" aria-controls="a1" id="t1">Torii</button>
+          </h4>
+          <div id="a1" role="region" aria-labelledby="t1" hidden>
+            <p>Portar som markerar gränsen mellan den profana världen och det heliga.</p>
+          </div>
+        </article>
+
+        <article class="acc-item">
+          <h4>
+            <button class="acc-trigger" aria-expanded="false" aria-controls="a2" id="t2">Washoku</button>
+          </h4>
+          <div id="a2" role="region" aria-labelledby="t2" hidden>
+            <p>Japansk matkultur — balans mellan smak, färg och säsong.</p>
+          </div>
+        </article>
+
+        <article class="acc-item">
+          <h4>
+            <button class="acc-trigger" aria-expanded="false" aria-controls="a3" id="t3">Ma (間)</button>
+          </h4>
+          <div id="a3" role="region" aria-labelledby="t3" hidden>
+            <p>Utrymmet mellan former och ljud — där tystnaden skapar harmoni.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <dialog id="lightbox" aria-label="Bild i helskärm">
+    <button id="lbClose" class="btn-ghost close" aria-label="Stäng">✕</button>
+    <img id="lbImg" alt="" />
+    <p id="lbCap"></p>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Nippon · Designad med stillhet och balans.</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
