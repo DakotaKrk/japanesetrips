@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vouched</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  background:#F4F2EE;
+  color:#1A1A1A;
+  min-height:100vh;
+  padding:48px 24px;
+}
+
+.wrap{max-width:620px;margin:0 auto}
+
+/* LOGO */
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:22px;font-weight:600;
+  letter-spacing:.1em;color:#1A1A1A;
+  margin-bottom:48px;
+  display:flex;align-items:center;gap:8px;
+}
+.logo-badge{
+  font-family:'DM Sans',sans-serif;
+  font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  background:#1A1A1A;color:#F4F2EE;
+  padding:4px 10px;font-weight:500;
+}
+
+/* INTRO */
+.intro{background:#1A1A1A;padding:48px 44px;margin-bottom:3px}
+.intro-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C9A84C;margin-bottom:20px}
+.intro h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(30px,5vw,42px);
+  font-weight:600;line-height:1.12;
+  color:#FAFAF8;margin-bottom:20px;
+}
+.intro h1 em{font-style:italic;color:#C9A84C}
+.intro p{font-size:15px;line-height:1.8;color:#9CA3AF;font-weight:300;max-width:460px}
+
+/* WHAT IS IT */
+.what{background:#FFFFFF;padding:40px 44px;margin-bottom:3px}
+.section-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C9A84C;margin-bottom:16px}
+.what h2{font-family:'Playfair Display',serif;font-size:24px;font-weight:600;margin-bottom:14px;line-height:1.3}
+.what h2 em{font-style:italic;color:#C9A84C}
+.what p{font-size:14px;line-height:1.8;color:#6B6B6B;font-weight:300}
+
+/* PROBLEM */
+.problem{background:#FFFFFF;padding:40px 44px;margin-bottom:3px}
+.problem-list{display:flex;flex-direction:column;gap:18px;margin-top:4px}
+.p-item{display:flex;gap:16px;align-items:flex-start}
+.p-num{
+  font-family:'Playfair Display',serif;font-size:28px;font-weight:600;
+  color:#E8E4DC;line-height:1;min-width:32px;margin-top:-2px;
+}
+.p-text strong{display:block;font-size:14px;font-weight:500;color:#1A1A1A;margin-bottom:3px}
+.p-text span{font-size:13px;color:#9A9A9A;line-height:1.6;font-weight:300}
+
+/* HOW */
+.how{background:#1A1A1A;padding:40px 44px;margin-bottom:3px}
+.how h2{font-family:'Playfair Display',serif;font-size:24px;font-weight:600;color:#FAFAF8;margin-bottom:24px}
+.how h2 em{font-style:italic;color:#C9A84C}
+.how-steps{display:flex;flex-direction:column;gap:0}
+.how-step{
+  display:flex;gap:20px;align-items:flex-start;
+  padding:18px 0;border-bottom:1px solid #232D3F;
+}
+.how-step:last-child{border-bottom:none;padding-bottom:0}
+.h-num{
+  min-width:28px;height:28px;background:#C9A84C;color:#1A1A1A;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:500;flex-shrink:0;margin-top:2px;
+}
+.h-text strong{display:block;font-size:13px;font-weight:500;color:#FAFAF8;margin-bottom:3px}
+.h-text span{font-size:12px;color:#6B7280;line-height:1.6;font-weight:300}
+
+/* PROFILES */
+.profiles{background:#FFFFFF;padding:40px 44px;margin-bottom:3px}
+.profiles h2{font-family:'Playfair Display',serif;font-size:24px;font-weight:600;margin-bottom:6px}
+.profiles h2 em{font-style:italic;color:#C9A84C}
+.profiles-sub{font-size:13px;color:#9A9A9A;margin-bottom:28px;font-weight:300}
+
+/* PROFILE CARD */
+.p-card{border:1px solid #EBEBEB;margin-bottom:16px;padding:20px}
+.p-card:last-child{margin-bottom:0}
+.p-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #F0EDE8;flex-wrap:wrap}
+.avatar{
+  width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:white;
+  flex-shrink:0;
+}
+.av1{background:linear-gradient(135deg,#C9A84C,#8B6914)}
+.av2{background:linear-gradient(135deg,#7A9E87,#4A6E57)}
+.av3{background:linear-gradient(135deg,#8B9DC3,#4A5D8C)}
+.p-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;margin-bottom:2px}
+.p-role{font-size:11px;color:#9A9A9A;letter-spacing:.04em}
+.p-location{font-size:11px;color:#9A9A9A;margin-top:2px}
+.v-badge{
+  margin-left:auto;display:flex;align-items:center;gap:5px;
+  background:#F0FAF3;border:1px solid #B8E6C4;
+  padding:4px 10px;font-size:10px;color:#2D8A4E;
+  letter-spacing:.06em;white-space:nowrap;flex-shrink:0;
+}
+
+.skills-label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#C9A84C;margin-bottom:12px}
+
+.skill-row{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  padding:10px 0;border-bottom:1px solid #F7F5F2;gap:10px;
+  flex-wrap:wrap;
+}
+.skill-row:last-child{border-bottom:none;padding-bottom:0}
+.skill-left{flex:1;min-width:0}
+.skill-name{font-size:13px;color:#1A1A1A;margin-bottom:2px;word-break:break-word}
+.skill-by{font-size:11px;color:#B0B0B0;font-weight:300;word-break:break-word}
+.skill-status{flex-shrink:0;margin-top:2px}
+.s-verified{
+  font-size:10px;color:#2D8A4E;
+  display:flex;align-items:center;gap:4px;letter-spacing:.04em;
+}
+.s-verified::before{content:'✓';font-weight:600}
+.s-contact{
+  font-size:10px;color:#C9A84C;
+  border:1px solid rgba(201,168,76,.35);
+  padding:4px 10px;letter-spacing:.04em;white-space:nowrap;
+}
+.s-pending{font-size:10px;color:#C0BDB8;font-style:italic}
+
+.p-footer{
+  margin-top:16px;padding-top:14px;border-top:1px solid #F0EDE8;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;
+}
+.p-stats{font-size:11px;color:#B0B0B0}
+.p-stats strong{color:#C9A84C}
+.avail-badge{
+  font-size:10px;color:#2D8A4E;letter-spacing:.06em;
+  display:flex;align-items:center;gap:5px;
+}
+.avail-badge::before{content:'●';font-size:8px}
+
+/* FOR WHO */
+.for-who{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:3px}
+.for-box{background:#FFFFFF;padding:28px 24px}
+.for-icon{font-size:22px;margin-bottom:12px}
+.for-title{font-size:13px;font-weight:500;color:#1A1A1A;margin-bottom:8px}
+.for-desc{font-size:12px;color:#9A9A9A;line-height:1.6;font-weight:300}
+
+/* BOTTOM */
+.bottom{background:#1A1A1A;padding:44px;text-align:center}
+.b-logo{font-family:'Playfair Display',serif;font-size:30px;font-weight:600;color:#FAFAF8;margin-bottom:8px}
+.b-logo span{color:#C9A84C}
+.b-tag{font-size:12px;color:#6B7280;letter-spacing:.1em;margin-bottom:24px}
+.b-line{height:1px;background:#232D3F;max-width:80px;margin:20px auto}
+.b-note{font-size:13px;color:#6B7280;line-height:1.7;font-weight:300}
+.b-note strong{color:#C9A84C;font-weight:500}
+
+/* CONTROL */
+.control-section{background:#FFFFFF;padding:40px 44px;margin-bottom:3px}
+.control-section h2{font-family:'Playfair Display',serif;font-size:24px;font-weight:600;margin-bottom:14px;line-height:1.3}
+.control-section h2 em{font-style:italic;color:#C9A84C}
+.control-desc{font-size:14px;line-height:1.8;color:#6B6B6B;font-weight:300;margin-bottom:28px}
+
+.status-example{background:#F7F5F2;padding:24px}
+.status-label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#C9A84C;margin-bottom:14px}
+.status-rows{display:flex;flex-direction:column;gap:2px;margin-bottom:20px}
+
+.status-row{
+  background:white;border:1px solid #EBEBEB;
+  padding:14px 16px;display:flex;align-items:center;gap:14px;
+  opacity:.5;
+}
+.status-row.active{opacity:1;border-color:#1A1A1A}
+
+.status-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.status-dot.green{background:#2ECC71}
+.status-dot.yellow{background:#F0B429}
+.status-dot.red{background:#E55353}
+
+.status-info{flex:1}
+.status-title{font-size:13px;font-weight:500;color:#1A1A1A;margin-bottom:2px}
+.status-desc{font-size:11px;color:#9A9A9A;font-weight:300}
+
+.status-selected{
+  font-size:10px;color:#2D8A4E;
+  background:#F0FAF3;border:1px solid #B8E6C4;
+  padding:3px 10px;letter-spacing:.06em;white-space:nowrap;
+}
+
+.interest-block{border-top:1px solid #EBEBEB;padding-top:18px}
+.interest-label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#C9A84C;margin-bottom:12px}
+.interest-chips{display:flex;flex-wrap:wrap;gap:8px}
+.i-chip{
+  background:white;border:1px solid #EBEBEB;
+  padding:6px 14px;font-size:12px;color:#9A9A9A;
+  font-family:'DM Sans',sans-serif;
+}
+.i-chip.on{background:#1A1A1A;color:#F4F2EE;border-color:#1A1A1A}
+
+/* UPPDRAG */
+.uppdrag{background:#FFFFFF;padding:40px 44px;margin-bottom:3px}
+.uppdrag h2{font-family:'Playfair Display',serif;font-size:24px;font-weight:600;margin-bottom:14px;line-height:1.3}
+.uppdrag h2 em{font-style:italic;color:#C9A84C}
+.uppdrag-desc{font-size:14px;line-height:1.8;color:#6B6B6B;font-weight:300;margin-bottom:28px}
+
+.filter-example{background:#F7F5F2;padding:24px}
+.filter-label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#C9A84C;margin-bottom:14px}
+.filter-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.filter-chip{
+  background:white;border:1px solid #EBEBEB;
+  padding:7px 14px;font-size:12px;color:#1A1A1A;
+  font-family:'DM Sans',sans-serif;
+}
+.filter-chip.active{background:#1A1A1A;color:#F4F2EE;border-color:#1A1A1A}
+
+.filter-result{
+  background:white;border:1px solid #EBEBEB;
+  padding:16px;display:flex;align-items:center;gap:14px;
+}
+.fr-avatar{
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:13px;font-weight:600;color:white;
+  flex-shrink:0;
+}
+.fr-info{flex:1}
+.fr-name{font-size:13px;font-weight:500;color:#1A1A1A;margin-bottom:2px}
+.fr-meta{font-size:11px;color:#9A9A9A;font-weight:300}
+.fr-match{
+  font-size:10px;color:#2D8A4E;
+  background:#F0FAF3;border:1px solid #B8E6C4;
+  padding:4px 10px;letter-spacing:.06em;white-space:nowrap;
+}
+
+@media(max-width:480px){
+  body{padding:24px 16px}
+  .wrap{max-width:100%}
+  .intro,.what,.problem,.how,.profiles,.uppdrag,.control-section,.bottom{padding:28px 20px}
+  .for-who{grid-template-columns:1fr}
+  .filter-row{gap:6px}
+  .status-rows{gap:2px}
+  .interest-chips{gap:6px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- LOGO -->
+  <div class="logo">
+    Vouched
+    <span class="logo-badge">Beta</span>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <div class="intro-label">En ny standard för rekrytering</div>
+    <h1>Kompetens som går<br/>att <em>lita på.</em></h1>
+    <p>Vouched är plattformen där varje kompetens är bekräftad av en verklig referens. Inte påstådd. Inte gissad. Bevisad.</p>
+  </div>
+
+  <!-- WHAT IS IT -->
+  <div class="what">
+    <div class="section-label">Vad är Vouched?</div>
+    <h2>En plattform där kompetens <em>bevisas</em> – inte bara listas</h2>
+    <p>På Vouched skapar kandidater en profil där varje kompetens bekräftas av en namngiven referens. Som arbetsgivare söker du direkt på vad du behöver, ser vem som bekräftat kompetensen – och kan kontakta den referensen direkt. Allt på ett och samma ställe. Ingen jakt. Ingen osäkerhet.</p>
+  </div>
+
+  <!-- PROBLEM -->
+  <div class="problem">
+    <div class="section-label">Varför behövs detta?</div>
+    <div class="problem-list">
+      <div class="p-item">
+        <div class="p-num">01</div>
+        <div class="p-text">
+          <strong>Du läser igenom hundratals CV:n</strong>
+          <span>De flesta matchar inte. Resten är överdrivna. Du vet aldrig vad som faktiskt stämmer förrän det är för sent.</span>
+        </div>
+      </div>
+      <div class="p-item">
+        <div class="p-num">02</div>
+        <div class="p-text">
+          <strong>Referencer är ett separat jobb</strong>
+          <span>Du hittar en kandidat du gillar – sen börjar jakten. Ring hit, maila dit. Dagar försvinner innan du vet något.</span>
+        </div>
+      </div>
+      <div class="p-item">
+        <div class="p-num">03</div>
+        <div class="p-text">
+          <strong>Rätt person hittar dig aldrig</strong>
+          <span>Den bästa kandidaten söker kanske inte aktivt just nu. Med dagens system syns de aldrig i ditt flöde.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW -->
+  <div class="how">
+    <h2>Hur fungerar <em>verifieringen?</em></h2>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="h-num">1</div>
+        <div class="h-text">
+          <strong>Kandidaten lägger till en kompetens</strong>
+          <span>T.ex. "Projektledning", "Canon R5" eller "Teamledning 10+ personer"</span>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="h-num">2</div>
+        <div class="h-text">
+          <strong>En referens bjuds in via e-post</strong>
+          <span>En tidigare chef, kollega eller uppdragsgivare får en länk och svarar på två enkla frågor. Tar 2 minuter.</span>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="h-num">3</div>
+        <div class="h-text">
+          <strong>Kompetensen får en verifieringsbadge</strong>
+          <span>Arbetsgivaren ser exakt vem som bekräftat vad – och kan kontakta referensen direkt vid behov.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROFILES -->
+  <div class="profiles">
+    <div class="section-label">Exempel på profiler</div>
+    <h2>Så här ser det <em>ut</em></h2>
+    <div class="profiles-sub">Verkliga kompetenser. Riktiga referenser. Inget som kan fejkas.</div>
+
+    <!-- PROFILE 1 -->
+    <div class="p-card">
+      <div class="p-header">
+        <div class="avatar av1">AL</div>
+        <div>
+          <div class="p-name">Anna Lindgren</div>
+          <div class="p-role">Projektledare · HR</div>
+          <div class="p-location">📍 Stockholm</div>
+        </div>
+        <div class="v-badge">● Verifierad</div>
+      </div>
+      <div class="skills-label">Kompetenser</div>
+      <div class="skill-row">
+        <div class="skill-left">
+          <div class="skill-name">Teamledning 10–20 personer</div>
+          <div class="skill-by">Bekräftad av Maria S. · Konsultchef, Accenture</div>
+        </div>
+        <div class="s-contact">Kontakta ref →</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-left">
+          <div class="skill-name">Förändringsledning</div>
+          <div class="skill-by">Bekräftad av Johan K. · VD, Buildco</div>
+        </div>
+        <div class="s-verified skill-status">Verifierad</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-left">
+          <div class="skill-name">Rekrytering & onboarding</div>
+          <div class="skill-by">Bekräftad av 2 referenser</div>
+        </div>
+        <div class="s-verified skill-status">Verifierad</div>
+      </div>
+      <div class="p-footer">
+        <div class="p-stats"><strong>4</strong> verifierade kompetenser</div>
+        <div class="avail-badge">Tillgänglig för uppdrag</div>
+      </div>
+    </div>
+
+    <!-- PROFILE 2 -->
+    <div class="p-card">
+      <div class="p-header">
+        <div class="avatar av2">MK</div>
+        <div>
+          <div class="p-name">Marcus Karlsson</div>
+          <div class="p-role">Fotograf · Videoproducent</div>
+          <div class="p-location">📍 Göteborg · Distans</div>
+        </div>
+        <div class="v-badge">● Verifierad</div>
+      </div>
+      <div class="skills-label">Kompetenser & utrustning</div>
+      <div class="skill-row">
+        <div class="skill-left">
+          <div class="skill-name">Canon EOS R5 · Studiofoto</div>
+          <div class="skill-by">Bekräftad av Sara L. · Creative Director, BBDO</div>
+        </div>
+        <div class="s-contact">Kontakta ref →</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-left">
+          <div class="skill-name">Drönarlicens A2</div>
+          <div class="skill-by">Bekräftad av Erik M. · Eventchef</div>
+        </div>
+        <div class="s-verified skill-status">Verifierad</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-left">
+          <div class="skill-name">Sony FX3 · Videoproduktion</div>
+          <div class="skill-by">Inbjudan skickad</div>
+        </div>
+        <div class="s-pending skill-status">Väntar…</div>
+      </div>
+      <div class="p-footer">
+        <div class="p-stats"><strong>2 av 3</strong> kompetenser verifierade</div>
+        <div class="avail-badge">Tillgänglig helger</div>
+      </div>
+    </div>
+
+    <!-- PROFILE 3 -->
+    <div class="p-card">
+      <div class="p-header">
+        <div class="avatar av3">SB</div>
+        <div>
+          <div class="p-name">Sofia Berg</div>
+          <div class="p-role">Ekonom · Controller</div>
+          <div class="p-location">📍 Malmö</div>
+        </div>
+        <div class="v-badge">● Verifierad</div>
+      </div>
+      <div class="skills-label">Kompetenser</div>
+      <div class="skill-row">
+        <div class="skill-left">
+          <div class="skill-name">Budgetansvar 50Mkr+</div>
+          <div class="skill-by">Bekräftad av Thomas H. · CFO, Kinnarps</div>
+        </div>
+        <div class="s-contact">Kontakta ref →</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-left">
+          <div class="skill-name">Årsredovisning & revision</div>
+          <div class="skill-by">Bekräftad av Anna P. · Revisor, EY</div>
+        </div>
+        <div class="s-verified skill-status">Verifierad</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-left">
+          <div class="skill-name">Affärssystem – SAP & Visma</div>
+          <div class="skill-by">Bekräftad av 3 referenser</div>
+        </div>
+        <div class="s-verified skill-status">Verifierad</div>
+      </div>
+      <div class="p-footer">
+        <div class="p-stats"><strong>5</strong> verifierade kompetenser</div>
+        <div class="avail-badge">Öppen för nya möjligheter</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOR WHO -->
+  <div class="for-who">
+    <div class="for-box">
+      <div class="for-icon">🔍</div>
+      <div class="for-title">För dig som anställer</div>
+      <div class="for-desc">Sök direkt på kompetens. Se verifierade profiler. Kontakta kandidat och referens på samma ställe – utan att läsa ett enda CV.</div>
+    </div>
+    <div class="for-box">
+      <div class="for-icon">✦</div>
+      <div class="for-title">För dig som vill bli hittad</div>
+      <div class="for-desc">Bygg din profil en gång. Du bestämmer när du är öppen för kontakt – och för vad. Ingen blir kontaktad mot sin vilja.</div>
+    </div>
+  </div>
+
+  <!-- CONTROL -->
+  <div class="control-section">
+    <div class="section-label">Du har alltid kontrollen</div>
+    <h2>Plattformen som <em>respekterar</em> båda sidor</h2>
+    <p class="control-desc">Till skillnad från LinkedIn kontaktar ingen dig utan att du valt att vara öppen för det. Du väljer din status – och vad du är intresserad av. Arbetsgivare ser bara dem som faktiskt vill bli kontaktade.</p>
+
+    <div class="status-example">
+      <div class="status-label">Din synlighet – du väljer</div>
+      <div class="status-rows">
+        <div class="status-row active">
+          <div class="status-dot green"></div>
+          <div class="status-info">
+            <div class="status-title">Öppen för möjligheter</div>
+            <div class="status-desc">Arbetsgivare kan se din profil och kontakta dig</div>
+          </div>
+          <div class="status-selected">Valt</div>
+        </div>
+        <div class="status-row">
+          <div class="status-dot yellow"></div>
+          <div class="status-info">
+            <div class="status-title">Lyssnar gärna</div>
+            <div class="status-desc">Synlig men kontaktas bara vid rätt match</div>
+          </div>
+        </div>
+        <div class="status-row">
+          <div class="status-dot red"></div>
+          <div class="status-info">
+            <div class="status-title">Inte tillgänglig just nu</div>
+            <div class="status-desc">Profilen finns men kan inte kontaktas</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="interest-block">
+        <div class="interest-label">Vad är du öppen för?</div>
+        <div class="interest-chips">
+          <div class="i-chip on">Fast tjänst</div>
+          <div class="i-chip on">Kortuppdrag</div>
+          <div class="i-chip">Konsultuppdrag</div>
+          <div class="i-chip on">Helgjobb</div>
+          <div class="i-chip">Distans</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPPDRAG -->
+  <div class="uppdrag">
+    <div class="section-label">Kommer snart</div>
+    <h2>Hitta rätt person till <em>varje uppdrag</em></h2>
+    <p class="uppdrag-desc">Behöver du en fotograf till ett bröllop nästa helg? En videoproducent med specifik utrustning? På Vouched kommer du kunna filtrera på kompetens, utrustning, plats och tillgänglighet – och hitta rätt person på minuter.</p>
+    <div class="filter-example">
+      <div class="filter-label">Exempel på sökning</div>
+      <div class="filter-row">
+        <div class="filter-chip active">📷 Fotograf</div>
+        <div class="filter-chip active">Canon R5</div>
+        <div class="filter-chip active">📍 Stockholm</div>
+        <div class="filter-chip active">Tillgänglig 14 juni</div>
+        <div class="filter-chip">+ Lägg till filter</div>
+      </div>
+      <div class="filter-result">
+        <div class="fr-avatar av2">MK</div>
+        <div class="fr-info">
+          <div class="fr-name">Marcus Karlsson</div>
+          <div class="fr-meta">Fotograf · Canon R5 · Stockholm · ✓ Verifierad</div>
+        </div>
+        <div class="fr-match">Matchar</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="bottom">
+    <div class="b-logo">Vouched<span>.</span></div>
+    <div class="b-tag">Every skill, vouched for.</div>
+    <div class="b-line"></div>
+    <div class="b-note">Vouched är under uppbyggnad.<br/><strong>Är du nyfiken? Hör av dig.</strong></div>
+  </div>
+
+</div>
+</body>
+</html>
